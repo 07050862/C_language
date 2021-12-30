@@ -1,9 +1,9 @@
-/*程そ计*/ 
+/*鏈�澶у叕鍥犳暩*/ 
 #include <stdio.h>
 int main(void)
 {
 	int a,b,i,ans;
-	printf("叫块进俱计");
+	printf("璜嬭几鍏ュ叐鍊嬫暣鏁革細");
 	scanf("%d%d",&a,&b);
 	
 	for(i=1;i<=a&&i<=b;i++)
@@ -11,7 +11,7 @@ int main(void)
 		if(a%i==0&&b%i==0)
 		    ans = i;
 	}
-	printf("程そ计%d",ans);
+	printf("鏈�澶у叕鍥犳暩鐐猴細%d",ans);
 	
 	return 0;
 }
