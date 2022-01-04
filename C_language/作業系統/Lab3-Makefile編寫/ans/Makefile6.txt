@@ -1,0 +1,15 @@
+# Makefile6
+CC = gcc
+CFLAGS = -Wall
+OBJS = test-main.o sub.o add.o
+
+test: $(OBJS)
+	$(CC) -o test $(OBJS)
+main.o: main.c common.h sub0.h sub1.h
+	$(CC) $(CFLAGS) -c test-main.c
+sub0.o: sub0.c sub0.h
+	$(CC) $(CFLAGS) -c sub0.c
+sub1.o: sub1.c sub1.h
+	$(CC) $(CFLAGS) -c add.c
+clean:
+	rm -f $(OBJS) test
