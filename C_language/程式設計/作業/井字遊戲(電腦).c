@@ -1,234 +1,218 @@
 /*
-¤«¦r¹CÀ¸¡A¤H¸£©M¹q¸£¹ï«Ù!
-
-½Ğ³]­p¤@­Óµ{¦¡¡AÅı¨Ï¥ÎªÌ(O)©M¹q¸£(X)ª±¤«¦r¹CÀ¸¡A¥Ñ¨Ï¥ÎªÌ¶}©l¡A¹q¸£­nºÉ¤O¨ú³Ó©M¨¾¦u¡A¨Ã§PÂ_½ÖÄ¹¤F¡C
-
-ÀÉ¦W: ¾Ç¸¹-hw10.c (¨Ò¦p¡G04051234-hw0.c)
-
-µ{¦¡¥²¶·²Å¦X¤U¦C­n¨D¡G
-1. µ{¦¡²Ä¤@¦æ¥²¶·¥[¤W§tµ{¦¡¦WºÙ,¾Ç¸¹,©m¦W,¤Î¤é´Áªºµù¸Ñ
-2. µ{¦¡¤§¿é¤J¤Î¿é¥Xµ²ªG¥²¶·²Å¦X½d¨Ò°õ¦æµ²ªG
-
-=== ½d¨Ò°õ¦æµ²ªG(1) ===
+äº•å­—éŠæˆ²ï¼Œäººè…¦å’Œé›»è…¦å°å¼ˆ!
+è«‹è¨­è¨ˆä¸€å€‹ç¨‹å¼ï¼Œè®“ä½¿ç”¨è€…(O)å’Œé›»è…¦(X)ç©äº•å­—éŠæˆ²ï¼Œç”±ä½¿ç”¨è€…é–‹å§‹ï¼Œé›»è…¦è¦ç›¡åŠ›å–å‹å’Œé˜²å®ˆï¼Œä¸¦åˆ¤æ–·èª°è´äº†ã€‚
+æª”å: å­¸è™Ÿ-hw10.c (ä¾‹å¦‚ï¼š04051234-hw0.c)
+ç¨‹å¼å¿…é ˆç¬¦åˆä¸‹åˆ—è¦æ±‚ï¼š
+1. ç¨‹å¼ç¬¬ä¸€è¡Œå¿…é ˆåŠ ä¸Šå«ç¨‹å¼åç¨±,å­¸è™Ÿ,å§“å,åŠæ—¥æœŸçš„è¨»è§£
+2. ç¨‹å¼ä¹‹è¼¸å…¥åŠè¼¸å‡ºçµæœå¿…é ˆç¬¦åˆç¯„ä¾‹åŸ·è¡Œçµæœ
+=== ç¯„ä¾‹åŸ·è¡Œçµæœ(1) ===
  | |
 -+-+-
  | |
 -+-+-
  | |
-
 Player put O:0 0
 O| |
 -+-+-
  | |
 -+-+-
  | |
-
 Computer put X: 0 1
 O|X|
 -+-+-
  | |
 -+-+-
  | |
-
 Player put O:1 0
 O|X|
 -+-+-
 O| |
 -+-+-
  | |
-
 Computer put X: 2 0
 O|X|
 -+-+-
 O| |
 -+-+-
 X| |
-
 Player put O:2 2
 O|X|
 -+-+-
 O| |
 -+-+-
 X| |O
-
 Computer put X: 1 1
 O|X|
 -+-+-
 O|X|
 -+-+-
 X| |O
-
 Player put O:0 2
 O|X|O
 -+-+-
 O|X|
 -+-+-
 X| |O
-
 Computer put X: 2 1
 O|X|O
 -+-+-
 O|X|
 -+-+-
 X|X|O
-
 Player X win!
 */
 #include <stdio.h>
 int main(void)
 {
-	int player = 0,winner = 0,choice = 0,row = 0,column = 0,line = 0,i,j,k,dd=0;
-	char board[3][3] = 	{ {' ',' ',' '},{' ',' ',' '},{' ',' ',' '} };
-    int math[3][3] = 	{ {0,0,0},{0,0,0},{0,0,0} };
-	for(i = 0; i<9 &&  winner==0;i++)
-	{        
-		    printf("%c|%c|%c\n",board[0][0],board[0][1],board[0][2]);
-		    printf("-+-+-\n");
-		    printf("%c|%c|%c\n",board[1][0],board[1][1],board[1][2]);
-		    printf("-+-+-\n");
-		    printf("%c|%c|%c\n\n",board[2][0],board[2][1],board[2][2]);
-		    player = i%2+1;
-	    do
-	    {
-			if(player==1)
+   int player = 0, winner = 0, choice = 0, row = 0, column = 0, line = 0, i, j, k, dd = 0;
+   char board[3][3] = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+   int math[3][3] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+   for (i = 0; i < 9 && winner == 0; i++)
+   {
+      printf("%c|%c|%c\n", board[0][0], board[0][1], board[0][2]);
+      printf("-+-+-\n");
+      printf("%c|%c|%c\n", board[1][0], board[1][1], board[1][2]);
+      printf("-+-+-\n");
+      printf("%c|%c|%c\n\n", board[2][0], board[2][1], board[2][2]);
+      player = i % 2 + 1;
+      do
+      {
+         if (player == 1)
+         {
+            printf("Player put O:");
+            scanf("%d %d", &row, &column);
+         }
+         else
+         {
+            printf("Computer put X:");
+         }
+      } while (board[row][column] == 'X');
+      if (player == 1)
+      {
+         board[row][column] = 'O';
+         math[row][column] = 1;
+      }
+      else
+      {
+         dd = 0;
+         if (math[0][0] + math[1][1] + math[2][2] == 2)
+         {
+            for (j = 0; j <= 2; j++)
             {
-				printf("Player put O:");
-		        scanf("%d %d",&row,&column);
-	    	}
-			else
-		    {
-			    printf("Computer put X:");			    
-			}
-	    }
-	    while(board[row][column] =='X');
-			if(player==1)
-		    {
-			    board[row][column] ='O';
-		        math[row][column] =1;
-		    }
-		   else
-		    {	dd=0;	
-				if(math[0][0]+math[1][1]+math[2][2]==2)
-				{
-						for(j=0;j<=2;j++)
-					    {
-					    	if(math[j][j]==0)
-					    	    {
-					    	   //	printf("±×±Æ¦³«Â¯Ù\n"); 
-					                board[j][j] ='X';
-		                            math[j][j] =-1;
-		                            printf("%d %d\n",j,j);  
-		                            break;
-								}
-						}
-				}
-				else if(math[0][2]+math[1][1]+math[2][0]==2)
-				{     
-					                if(math[0][2]==0)
-					                {   board[0][2] ='X';
-		                                math[0][2] =-1;
-										printf("0 2\n");
-										} 
-		                            else if(math[1][1]==0)
-					                {   board[1][1] ='X';
-		                                math[1][1] =-1;
-										printf("1 1\n");
-										} 
-		                            else
-		                            {   board[2][0] ='X';
-		                                math[2][0] =-1;
-										printf("2 0\n");
-										} 
-							
-				}
-		        else
-		        {
-				    
-						for(k = 0;k <= 2;k++)
-				        {
-				            if(math[k][0]+math[k][1]+math[k][2]==2)
-				            {
-				        	    for(j=0;j<=2;j++)
-				    	            if(math[k][j]==0)
-				    	            { 
- 					                  //  printf("¾î±Æ¦³«Â¯Ù\n");  
-					                    board[k][j] ='X';
-		                                math[k][j] =-1;
-		                                printf("%d %d\n",k,j);
-		                                dd=-1;
-		                                break;	
-						            } 
-					
-				    	    }
-				    	    else if(math[0][k]+math[1][k]+math[2][k]==2)
-				            {
-				        	    for(j=0;j<=2&&dd!=-1;j++)
-				        	        if(math[j][k]==0)
-				        	        { 
- 					                   // printf("Áa±Æ¦³«Â¯Ù\n"); 
-					                    board[j][k] ='X';
-		                                math[j][k] =-1;
-		                                printf("%d %d\n",j,k);
-		                                dd=-1;
-		                                break;	
-						    	    } 
-					        }
-					    }
-				    
-					       				   					
-					            for(j=0;j<=2&&dd!=-1;j++)
- 				                 {     				        	          //  printf("¨S«Â¯Ù\n"); 
-								    if(math[0][j]==0&&dd!=-1)
- 				                    {
-				    		            board[0][j] ='X';
-		                                math[0][j] =-1;
-		                                printf("0 %d\n",j);
-		                                dd=0;
-		                                break;
-						            }
-						            else if(math[1][j]==0&&dd!=-1)
-						            {
-						            	board[1][j] ='X';
-		                                math[1][j] =-1;
-		                                printf("1 %d\n",j);
-		                                dd=0;
-		                                break;
-									}
-									else if(math[2][j]==0&&dd!=-1)
-						            {
-						            	board[2][j] ='X';
-		                                math[2][j] =-1;
-		                                printf("2 %d\n",j);
-		                                dd=0;
-		                                break;
-									}
-				                } 
-				
- 			    }
- 		    }
- 	
-			
-		if((board[0][0]==board[1][1] && board[0][0]==board[2][2]) &&board[1][1]!=' '||(board[0][2]==board[1][1] && board[0][2]==board[2][0]&&board[1][1]!=' '))
-			winner = player;
-		
-			for(line = 0;line <= 2;line++)
-				if(((board[line][0]==board[line][1] &&board[line][0]==board[line][2]&&board[line][0]!=' ')||(board[0][line]==board[1][line]&&board[0][line]==board[2][line]&&board[0][line]!=' ')) )
-					winner = player;
-	    
-	}
-	
-        printf("\n\n");
-	    printf("%c|%c|%c\n",board[0][0],board[0][1],board[0][2]);
-		printf("-+-+-\n");
-		printf("%c|%c|%c\n",board[1][0],board[1][1],board[1][2]);
-		printf("-+-+-\n");
-		printf("%c|%c|%c\n",board[2][0],board[2][1],board[2][2]);
-		
-		if(winner==1)
-            printf("Player O win!");
-        else if(winner==2)
-            printf("Player X win!");
-        else
-            printf("\n¥­¤â");
-	return 0;
+               if (math[j][j] == 0)
+               {
+                  //	printf("æ–œæ’æœ‰å¨è„…\n");
+                  board[j][j] = 'X';
+                  math[j][j] = -1;
+                  printf("%d %d\n", j, j);
+                  break;
+               }
+            }
+         }
+         else if (math[0][2] + math[1][1] + math[2][0] == 2)
+         {
+            if (math[0][2] == 0)
+            {
+               board[0][2] = 'X';
+               math[0][2] = -1;
+               printf("0 2\n");
+            }
+            else if (math[1][1] == 0)
+            {
+               board[1][1] = 'X';
+               math[1][1] = -1;
+               printf("1 1\n");
+            }
+            else
+            {
+               board[2][0] = 'X';
+               math[2][0] = -1;
+               printf("2 0\n");
+            }
+         }
+         else
+         {
+
+            for (k = 0; k <= 2; k++)
+            {
+               if (math[k][0] + math[k][1] + math[k][2] == 2)
+               {
+                  for (j = 0; j <= 2; j++)
+                     if (math[k][j] == 0)
+                     {
+                        //  printf("æ©«æ’æœ‰å¨è„…\n");
+                        board[k][j] = 'X';
+                        math[k][j] = -1;
+                        printf("%d %d\n", k, j);
+                        dd = -1;
+                        break;
+                     }
+               }
+               else if (math[0][k] + math[1][k] + math[2][k] == 2)
+               {
+                  for (j = 0; j <= 2 && dd != -1; j++)
+                     if (math[j][k] == 0)
+                     {
+                        // printf("ç¸±æ’æœ‰å¨è„…\n");
+                        board[j][k] = 'X';
+                        math[j][k] = -1;
+                        printf("%d %d\n", j, k);
+                        dd = -1;
+                        break;
+                     }
+               }
+            }
+
+            for (j = 0; j <= 2 && dd != -1; j++)
+            { //  printf("æ²’å¨è„…\n");
+               if (math[0][j] == 0 && dd != -1)
+               {
+                  board[0][j] = 'X';
+                  math[0][j] = -1;
+                  printf("0 %d\n", j);
+                  dd = 0;
+                  break;
+               }
+               else if (math[1][j] == 0 && dd != -1)
+               {
+                  board[1][j] = 'X';
+                  math[1][j] = -1;
+                  printf("1 %d\n", j);
+                  dd = 0;
+                  break;
+               }
+               else if (math[2][j] == 0 && dd != -1)
+               {
+                  board[2][j] = 'X';
+                  math[2][j] = -1;
+                  printf("2 %d\n", j);
+                  dd = 0;
+                  break;
+               }
+            }
+         }
+      }
+
+      if ((board[0][0] == board[1][1] && board[0][0] == board[2][2]) && board[1][1] != ' ' || (board[0][2] == board[1][1] && board[0][2] == board[2][0] && board[1][1] != ' '))
+         winner = player;
+
+      for (line = 0; line <= 2; line++)
+         if (((board[line][0] == board[line][1] && board[line][0] == board[line][2] && board[line][0] != ' ') || (board[0][line] == board[1][line] && board[0][line] == board[2][line] && board[0][line] != ' ')))
+            winner = player;
+   }
+
+   printf("\n\n");
+   printf("%c|%c|%c\n", board[0][0], board[0][1], board[0][2]);
+   printf("-+-+-\n");
+   printf("%c|%c|%c\n", board[1][0], board[1][1], board[1][2]);
+   printf("-+-+-\n");
+   printf("%c|%c|%c\n", board[2][0], board[2][1], board[2][2]);
+
+   if (winner == 1)
+      printf("Player O win!");
+   else if (winner == 2)
+      printf("Player X win!");
+   else
+      printf("\nå¹³æ‰‹");
+   return 0;
 }
